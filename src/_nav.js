@@ -32,8 +32,8 @@ const _nav = [
   },
   {
     component: CNavItem,
-    name: 'Registar',
-    to: '/theme/colors',
+    name: 'colectar',
+    to: '/colectar',
     icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
   },
   {

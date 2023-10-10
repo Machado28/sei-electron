@@ -66,7 +66,7 @@ const Dashboard = () => {
   ]
 
   const progressGroupExample1 = [
-    { title: 'Monday', value1: 34, value2: 78 },
+    { title: 'Luanda', value1: 34, value2: 78 },
     { title: 'Tuesday', value1: 56, value2: 94 },
     { title: 'Wednesday', value1: 12, value2: 67 },
     { title: 'Thursday', value1: 43, value2: 91 },
