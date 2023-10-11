@@ -1,18 +1,15 @@
 {
-  "name": "@coreui/coreui-free-react-admin-template",
+  "name": "SEI | SISTEMA DE ESTATISTICA INTEGRADO",
   "version": "4.5.0",
-  "description": "CoreUI Free React Admin Template",
+  "description": "CENSO, INE",
   "homepage": ".",
   "main": "main.js",
-  "bugs": {
-    "url": "https://github.com/coreui/coreui-free-react-admin-template/issues"
-  },
   "repository": {
     "type": "git",
-    "url": "git@github.com:coreui/coreui-free-react-admin-template.git"
+    "url": ""
   },
   "license": "MIT",
-  "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
+  "author": "Antonio Machado | zeiner(https://github.com/machado28)",
   "scripts": {
     "electron": "electron .",
     "build": "react-scripts build",
