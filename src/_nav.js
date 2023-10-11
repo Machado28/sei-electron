@@ -42,11 +42,6 @@ const _nav = [
         name: 'Amostras Colectadas',
         to: '/amostras/listar',
       },
-      {
-        component: CNavItem,
-        name: 'Error 500',
-        to: '/500',
-      },
     ],
   },
   {
