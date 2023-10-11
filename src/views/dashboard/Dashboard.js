@@ -1,5 +1,4 @@
 import React from 'react'
-
 import {
   CAvatar,
   CButton,
@@ -49,7 +48,7 @@ import avatar2 from 'src/assets/images/avatars/2.jpg'
 import avatar3 from 'src/assets/images/avatars/3.jpg'
 import avatar4 from 'src/assets/images/avatars/4.jpg'
 import avatar5 from 'src/assets/images/avatars/5.jpg'
-import avatar6 from 'src/assets/images/avatars/6.jpg'
+import avatar from 'src/assets/images/avatars/6.jpg'
 
 import WidgetsBrand from '../widgets/WidgetsBrand'
 import WidgetsDropdown from '../widgets/WidgetsDropdown'
@@ -161,7 +160,7 @@ const Dashboard = () => {
       activity: 'Last week',
     },
     {
-      avatar: { src: avatar6, status: 'danger' },
+      avatar: { src: avatar, status: 'danger' },
       user: {
         name: 'Friderik Dávid',
         new: true,
@@ -361,9 +360,7 @@ const Dashboard = () => {
                       </div>
                     </CCol>
                   </CRow>
-
                   <hr className="mt-0" />
-
                   {progressGroupExample2.map((item, index) => (
                     <div className="progress-group mb-4" key={index}>
                       <div className="progress-group-header">
@@ -376,9 +373,8 @@ const Dashboard = () => {
                       </div>
                     </div>
                   ))}
-
+                  activity
                   <div className="mb-5"></div>
-
                   {progressGroupExample3.map((item, index) => (
                     <div className="progress-group" key={index}>
                       <div className="progress-group-header">

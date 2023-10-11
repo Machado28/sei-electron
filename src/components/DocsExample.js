@@ -13,16 +13,7 @@ const DocsExample = (props) => {
     <div className="example">
       <CNav variant="tabs">
         <CNavItem>
-          <CNavLink href="#" active>
-            <CIcon icon={cilMediaPlay} className="me-2" />
-            Preview
-          </CNavLink>
-        </CNavItem>
-        <CNavItem>
-          <CNavLink href={_href} target="_blank">
-            <CIcon icon={cilCode} className="me-2" />
-            Code
-          </CNavLink>
+          <CNavLink active>AMOSTRA</CNavLink>
         </CNavItem>
       </CNav>
       <CTabContent className="rounded-bottom">

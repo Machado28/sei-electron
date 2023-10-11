@@ -47,12 +47,21 @@ const Alerts = React.lazy(() => import('./views/notifications/alerts/Alerts'))
 const Badges = React.lazy(() => import('./views/notifications/badges/Badges'))
 const Modals = React.lazy(() => import('./views/notifications/modals/Modals'))
 const Toasts = React.lazy(() => import('./views/notifications/toasts/Toasts'))
+const AmostrasColectadas = React.lazy(() => import('./views/pages/amostras-colecionadas'))
 
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
+const Colectar = React.lazy(() => import('./views/pages/colectar'))
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
+  {
+    path: '/amostras/listar',
+    name: 'Amostras Colectadas',
+    element: AmostrasColectadas,
+    exact: true,
+  },
+  { path: '/colectar', name: 'Colecta de amostras', element: Colectar, exact: true },
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', element: Colors },
   { path: '/theme/typography', name: 'Typography', element: Typography },

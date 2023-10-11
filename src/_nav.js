@@ -21,20 +21,33 @@ const _nav = [
     name: 'Dashboard',
     to: '/dashboard',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
-    badge: {
-      color: 'info',
-      text: 'NEW',
-    },
   },
   {
     component: CNavTitle,
-    name: 'Colecta de Dados',
+    name: 'Gerenciamento de Amostras',
   },
   {
-    component: CNavItem,
-    name: 'colectar',
-    to: '/colectar',
-    icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
+    component: CNavGroup,
+    name: 'Amostras',
+    icon: <CIcon icon={cilStar} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Colectar Amostra',
+        to: '/colectar',
+      },
+
+      {
+        component: CNavItem,
+        name: 'Amostras Colectadas',
+        to: '/amostras/listar',
+      },
+      {
+        component: CNavItem,
+        name: 'Error 500',
+        to: '/500',
+      },
+    ],
   },
   {
     component: CNavTitle,

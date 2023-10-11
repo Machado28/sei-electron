@@ -1,19 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   CButton,
   CCard,
   CCardBody,
   CCardHeader,
   CCol,
+  CDropdownDivider,
   CForm,
+  CFormCheck,
   CFormInput,
   CFormLabel,
+  CFormSelect,
   CFormTextarea,
+  CHeaderDivider,
   CRow,
 } from '@coreui/react'
 import { DocsExample } from 'src/components'
 
 const Colectar = () => {
+  const [validated, setValidated] = useState(false)
+  const handleSubmit = (event) => {
+    const form = event.currentTarget
+    if (form.checkValidity() === false) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+    setValidated(true)
+  }
   return (
     <CRow>
       <CCol xs={12}>
@@ -23,220 +36,316 @@ const Colectar = () => {
           </CCardHeader>
           <CCardBody>
             <DocsExample href="forms/form-control">
-              <CForm>
-                <div className="mb-3">
-                  <CFormLabel htmlFor="exampleFormControlInput1">Nome do Cidadão</CFormLabel>
+              <CForm
+                className="needs-validation"
+                noValidate
+                validated={validated}
+                onSubmit={handleSubmit}
+              >
+                <div className="mb-3 has-validation position-relative">
+                  <CFormLabel htmlFor="nome">Nome do Cidadão</CFormLabel>
                   <CFormInput
                     type="text"
-                    id="exampleFormControlInput1"
+                    aria-describedby="nome"
+                    id="nome"
                     placeholder="antonio machado"
+                    required
                   />
+                  <div className="invalid-tooltip">Este campo é obrigatorio!</div>
                 </div>
-                <div className="mb-3">
-                  <CFormLabel htmlFor="exampleFormControlTextarea1">descrição</CFormLabel>
-                  <CFormTextarea id="exampleFormControlTextarea1" rows="3"></CFormTextarea>
-                </div>
-              </CForm>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Form Control</strong> <small>Sizing</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-medium-emphasis small">
-              Set heights using <code>size</code> property like <code>size=&#34;lg&#34;</code> and{' '}
-              <code>size=&#34;sm&#34;</code>.
-            </p>
-            <DocsExample href="forms/form-control#sizing">
-              <CFormInput
-                type="text"
-                size="lg"
-                placeholder="Large input"
-                aria-label="lg input example"
-              />
-              <br />
-              <CFormInput
-                type="text"
-                placeholder="Default input"
-                aria-label="default input example"
-              />
-              <br />
-              <CFormInput
-                type="text"
-                size="sm"
-                placeholder="Small input"
-                aria-label="sm input example"
-              />
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Form Control</strong> <small>Disabled</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-medium-emphasis small">
-              Add the <code>disabled</code> boolean attribute on an input to give it a grayed out
-              appearance and remove pointer events.
-            </p>
-            <DocsExample href="forms/form-control#disabled">
-              <CFormInput
-                type="text"
-                placeholder="Disabled input"
-                aria-label="Disabled input example"
-                disabled
-              />
-              <br />
-              <CFormInput
-                type="text"
-                placeholder="Disabled readonly input"
-                aria-label="Disabled input example"
-                disabled
-                readOnly
-              />
-              <br />
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Form Control</strong> <small>Readonly</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-medium-emphasis small">
-              Add the <code>readOnly</code> boolean attribute on an input to prevent modification of
-              the input&#39;s value. Read-only inputs appear lighter (just like disabled inputs),
-              but retain the standard cursor.
-            </p>
-            <DocsExample href="forms/form-control#readonly">
-              <CFormInput
-                type="text"
-                placeholder="Readonly input here..."
-                aria-label="readonly input example"
-                readOnly
-              />
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Form Control</strong> <small>Readonly plain text</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-medium-emphasis small">
-              If you want to have <code>&lt;input readonly&gt;</code> elements in your form styled
-              as plain text, use the <code>plainText</code> boolean property to remove the default
-              form field styling and preserve the correct margin and padding.
-            </p>
-            <DocsExample href="components/accordion">
-              <CRow className="mb-3">
-                <CFormLabel htmlFor="staticEmail" className="col-sm-2 col-form-label">
-                  Email
-                </CFormLabel>
-                <div className="col-sm-10">
+                <div className="mb-3 has-validation position-relative">
+                  <CFormLabel htmlFor="nif">Nº Bilhete de Identidade(NIF)</CFormLabel>
                   <CFormInput
                     type="text"
-                    id="staticEmail"
-                    defaultValue="email@example.com"
-                    readOnly
-                    plainText
+                    aria-describedby="nif"
+                    id="nif"
+                    placeholder="ex.:0084764LA047"
                   />
                 </div>
-              </CRow>
-              <CRow className="mb-3">
-                <CFormLabel htmlFor="inputPassword" className="col-sm-2 col-form-label">
-                  Password
-                </CFormLabel>
-                <div className="col-sm-10">
-                  <CFormInput type="password" id="inputPassword" />
-                </div>
-              </CRow>
-            </DocsExample>
-            <DocsExample href="components/accordion">
-              <CForm className="row g-3">
-                <div className="col-auto">
-                  <CFormLabel htmlFor="staticEmail2" className="visually-hidden">
-                    Email
-                  </CFormLabel>
+                <CDropdownDivider></CDropdownDivider>
+
+                <div className="mb-3 has-validation position-relative">
+                  <CFormLabel htmlFor="nif">Telefone</CFormLabel>
                   <CFormInput
                     type="text"
-                    id="staticEmail2"
-                    defaultValue="email@example.com"
-                    readOnly
-                    plainText
+                    aria-describedby="nif"
+                    id="nif"
+                    placeholder="ex.:999 999 999"
+                    required
+                  />
+                  <div className="invalid-tooltip">Este campo é obrigatorio!</div>
+                </div>
+                <div className="mb-3 has-validation position-relative">
+                  <CFormLabel htmlFor="nascimento">Data de Nascimento</CFormLabel>
+                  <CDropdownDivider></CDropdownDivider>
+                  <input type="date" required className="form-control has-validation" />
+                  <div className="invalid-tooltip">Este campo é obrigatorio!</div>
+                </div>
+                <div className="mb-3 has-validation">
+                  <CFormLabel htmlFor="nascimento">Local de Nascimento</CFormLabel>
+                  <CDropdownDivider></CDropdownDivider>
+                  <CFormSelect
+                    required
+                    className="has-validation"
+                    aria-label="Local de Nascimento"
+                    options={[
+                      'Provincia',
+                      { label: 'Luanda', value: '1' },
+                      { label: 'Benguela', value: '2' },
+                      { label: 'Cunene', value: '3', disabled: true },
+                    ]}
                   />
                 </div>
-                <div className="col-auto">
-                  <CFormLabel htmlFor="inputPassword2" className="visually-hidden">
-                    Password
-                  </CFormLabel>
-                  <CFormInput type="password" id="inputPassword2" placeholder="Password" />
+                <div className="mb-3 grid gap-3 has-validation position-relative" id="ocupacao">
+                  <CFormLabel htmlFor="ocupacao">Ocupacação</CFormLabel>
+                  <CDropdownDivider></CDropdownDivider>
+                  <CFormCheck
+                    required
+                    type="radio"
+                    name="options-outlined"
+                    id="fp"
+                    autoComplete="on"
+                    button={{ color: 'primary', variant: 'outline' }}
+                    label="Funcionario Público"
+                    feedbackInvalid="Este campo é obrigatório!"
+                    defaultChecked
+                  />
+                  <CFormCheck
+                    type="radio"
+                    required
+                    name="options-outlined"
+                    id="fpv"
+                    autoComplete="on"
+                    button={{ color: 'primary', variant: 'outline' }}
+                    label="Funcionario do Privado"
+                  />
+                  <CFormCheck
+                    type="radio"
+                    name="options-outlined"
+                    id="tp"
+                    required
+                    autoComplete="on"
+                    button={{ color: 'primary', variant: 'outline' }}
+                    label="Tralhado Por conta própria"
+                  />
+                  <CFormCheck
+                    type="radio"
+                    className="p-3"
+                    name="options-outlined"
+                    id="dp"
+                    required
+                    autoComplete="on"
+                    button={{ color: 'primary', variant: 'outline' }}
+                    label="Desempregado"
+                  />
+                  <div className="mb-12 grid gap-3 mt-2 position-relative " id="salario">
+                    <CFormLabel htmlFor="solteiro">Salário</CFormLabel>
+                    <CDropdownDivider></CDropdownDivider>
+                    <CFormInput
+                      type="number"
+                      aria-describedby="salario"
+                      id="salario"
+                      min={0}
+                      placeholder="60.000kz"
+                    />
+                    <div className="invalid-tooltip">Este campo é obrigatorio!</div>
+                  </div>
                 </div>
-                <div className="col-auto">
-                  <CButton type="submit" className="mb-3">
-                    Confirm identity
+                <div className="mb-3 grid gap-3 " id="genero">
+                  <CFormLabel htmlFor="ocupacao">Genero</CFormLabel>
+                  <CDropdownDivider></CDropdownDivider>
+                  <CFormCheck
+                    type="radio"
+                    className="p-3 text-dark"
+                    name="genero"
+                    id="masculino"
+                    autoComplete="on"
+                    button={{ color: 'primary', variant: 'outline' }}
+                    label="Masculino"
+                  />
+                  <CFormCheck
+                    type="radio"
+                    className="p-3"
+                    name="genero"
+                    id="femenino"
+                    autoComplete="on"
+                    button={{ color: 'dark', variant: 'outline' }}
+                    label="Femenino"
+                  />
+                  <CHeaderDivider></CHeaderDivider>
+                  <hr></hr>
+                  <CHeaderDivider></CHeaderDivider>
+                  <CHeaderDivider></CHeaderDivider>
+                  <div className="mb-3 grid gap-3 " id="ocupacao">
+                    <CFormLabel htmlFor="ocupacao">Educação/Nível actual</CFormLabel>
+                    <CDropdownDivider></CDropdownDivider>
+                    <CFormCheck
+                      type="radio"
+                      className="p-3 ml-4"
+                      name="educacao"
+                      id="secundário"
+                      autoComplete="on"
+                      label="Ensino de Secundário"
+                      button={{ color: 'primary', variant: 'outline' }}
+                    />
+                    <CFormCheck
+                      type="radio"
+                      className="p- 3  "
+                      name="educacao"
+                      id="medio"
+                      autoComplete="on"
+                      label="Ensino Médio"
+                      button={{ color: 'primary', variant: 'outline' }}
+                    />
+                    <CFormCheck
+                      button={{ color: 'primary', variant: 'outline' }}
+                      type="radio"
+                      className="p-3"
+                      name="educacao"
+                      id="superior"
+                      autoComplete="on"
+                      label="Ensino Superior"
+                    />
+                  </div>
+                  <CFormLabel htmlFor="st" className="text-secundary">
+                    Descreva a Situação Academica do Nível Ncademico
+                  </CFormLabel>
+                  <CFormCheck
+                    type="radio"
+                    className="p-3"
+                    name="sac"
+                    id="te"
+                    autoComplete="on"
+                    defaultChecked
+                    label="Concluído"
+                  />{' '}
+                  <CFormCheck
+                    type="radio"
+                    className="p-3"
+                    name="sac"
+                    id="ea"
+                    autoComplete="on"
+                    label="Em Andamento"
+                  />
+                  <CFormCheck
+                    type="radio"
+                    className="p-3"
+                    name="sac"
+                    id="ei"
+                    autoComplete="on"
+                    label="Interrompido"
+                  />
+                  <CFormCheck
+                    type="radio"
+                    className="p-3"
+                    name="sac"
+                    id="ne"
+                    autoComplete="on"
+                    label="outro(Sem Alguma Frequência Escolar)"
+                  />
+                </div>
+                <CHeaderDivider></CHeaderDivider>
+                <hr></hr>
+                <CDropdownDivider></CDropdownDivider>
+                <div className="mb-3 grid gap-3 " id="casamento">
+                  <CFormLabel htmlFor="solteiro">Estado Conjugal/Civil</CFormLabel>
+                  <CDropdownDivider></CDropdownDivider>
+                  <CFormCheck
+                    button={{ color: 'primary', variant: 'outline' }}
+                    type="radio"
+                    className="p-3"
+                    name="casamento"
+                    id="solteiro"
+                    autoComplete="on"
+                    label="Solteiro(a)"
+                  />
+
+                  <CFormCheck
+                    button={{ color: 'primary', variant: 'outline' }}
+                    type="radio"
+                    className="p-3"
+                    name="casamento"
+                    id="casado"
+                    autoComplete="on"
+                    label="Casado(a)"
+                  />
+                  <CFormCheck
+                    button={{ color: 'primary', variant: 'outline' }}
+                    type="radio"
+                    className="p-3"
+                    name="casamento"
+                    id="divorciado"
+                    autoComplete="on"
+                    label="Divorciado"
+                  />
+                  <CFormCheck
+                    button={{ color: 'primary', variant: 'outline' }}
+                    type="radio"
+                    className="p-3"
+                    name="casamento"
+                    id="abandonada"
+                    autoComplete="on"
+                    label="abandonada(o)"
+                  />
+                </div>
+                <CHeaderDivider></CHeaderDivider>
+
+                <div className="mb-12 grid gap-3 position-relative " id="casamento">
+                  <CFormLabel htmlFor="solteiro">Quantidade de Filhos</CFormLabel>
+                  <CDropdownDivider></CDropdownDivider>
+                  <CFormInput
+                    type="number"
+                    aria-describedby="inputGroupPrependFeedback"
+                    id="filhos"
+                    required
+                    min={0}
+                    placeholder="total de filhos"
+                  />
+                  <div className="invalid-tooltip">Este campo é obrigatorio!</div>
+                </div>
+                <CHeaderDivider></CHeaderDivider>
+                <hr></hr>
+
+                <div className="mb-3 has-validation row justify-content-start ">
+                  <CFormLabel htmlFor="nascimento">Morada permanente</CFormLabel>
+                  <CCol xs={12} className="mt-4 mb-3 ">
+                    <CDropdownDivider></CDropdownDivider>
+                    <CFormSelect
+                      required
+                      className="has-validation"
+                      aria-label="localização"
+                      options={[
+                        'Provincia',
+                        { label: 'Luanda', value: '1' },
+                        { label: 'Benguela', value: '2' },
+                        { label: 'Cunene', value: '3', disabled: true },
+                      ]}
+                    />
+                  </CCol>
+                  <CCol xs={12} className="mt-4 mb-3  ">
+                    <CFormSelect
+                      required
+                      className="has-validation"
+                      aria-label="localização"
+                      options={[
+                        'Municipio',
+                        { label: 'Viana', value: '1' },
+                        { label: 'Rangel', value: '2' },
+                        { label: 'Icolo e Bengo', value: '3', disabled: true },
+                      ]}
+                    />
+                  </CCol>
+                </div>
+
+                <CHeaderDivider></CHeaderDivider>
+                <hr></hr>
+                <CDropdownDivider></CDropdownDivider>
+                <CCol xs={4} className="mt-4">
+                  <CButton color="success" className="text-white" type="submit">
+                    Cadastrar
                   </CButton>
-                </div>
+                </CCol>
               </CForm>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Form Control</strong> <small>File input</small>
-          </CCardHeader>
-          <CCardBody>
-            <DocsExample href="forms/form-control#file-input">
-              <div className="mb-3">
-                <CFormLabel htmlFor="formFile">Default file input example</CFormLabel>
-                <CFormInput type="file" id="formFile" />
-              </div>
-              <div className="mb-3">
-                <CFormLabel htmlFor="formFileMultiple">Multiple files input example</CFormLabel>
-                <CFormInput type="file" id="formFileMultiple" multiple />
-              </div>
-              <div className="mb-3">
-                <CFormLabel htmlFor="formFileDisabled">Disabled file input example</CFormLabel>
-                <CFormInput type="file" id="formFileDisabled" disabled />
-              </div>
-              <div className="mb-3">
-                <CFormLabel htmlFor="formFileSm">Small file input example</CFormLabel>
-                <CFormInput type="file" size="sm" id="formFileSm" />
-              </div>
-              <div>
-                <CFormLabel htmlFor="formFileLg">Large file input example</CFormLabel>
-                <CFormInput type="file" size="lg" id="formFileLg" />
-              </div>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Form Control</strong> <small>Color</small>
-          </CCardHeader>
-          <CCardBody>
-            <DocsExample href="forms/form-control#color">
-              <CFormLabel htmlFor="exampleColorInput">Color picker</CFormLabel>
-              <CFormInput
-                type="color"
-                id="exampleColorInput"
-                defaultValue="#563d7c"
-                title="Choose your color"
-              />
             </DocsExample>
           </CCardBody>
         </CCard>

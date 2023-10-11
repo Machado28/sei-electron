@@ -1,7 +1,6 @@
 import React, { Component, Suspense } from 'react'
 import { HashRouter, Route, Routes } from 'react-router-dom'
 import './scss/style.scss'
-import Colectar from './views/pages/colectar'
 
 const loading = (
   <div className="pt-3 text-center">
@@ -24,13 +23,6 @@ class App extends Component {
       <HashRouter>
         <Suspense fallback={loading}>
           <Routes>
-            <Route
-              exact
-              path="/colectar"
-              name="Coleção de dados de amostra"
-              element={<Colectar />}
-            />
-
             <Route exact path="/login" name="Login Page" element={<Login />} />
             <Route exact path="/register" name="Register Page" element={<Register />} />
             <Route exact path="/404" name="Page 404" element={<Page404 />} />

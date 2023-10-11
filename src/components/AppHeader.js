@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
@@ -25,7 +27,7 @@ const AppHeader = () => {
   const sidebarShow = useSelector((state) => state.sidebarShow)
 
   return (
-    <CHeader position="sticky" className="mb-4 .bg-dark bg-dark ">
+    <CHeader position="sticky" className="mb-4  ">
       <CContainer fluid>
         <CHeaderToggler
           className="ps-1"
@@ -39,13 +41,18 @@ const AppHeader = () => {
         <CHeaderNav className="d-none d-md-flex me-auto d-flex justify-content-center"></CHeaderNav>
         <CHeaderNav className="d-none d-md-flex me-auto d-flex justify-content-center">
           <CNavTitle className="position-relative">
-            <CHeaderText className="h3 text-light">SISTEMA DE ESTATÍSTICA INTEGRADO</CHeaderText>
+;<CHeaderText className="h4 text-primary">SISTEMA DE ESTATÍSTICA INTEGRADO</CHeaderText>
+
           </CNavTitle>
         </CHeaderNav>
         <CHeaderNav></CHeaderNav>
-        <CHeaderNav className="ms-3">
+        <CHeaderNav className="ms-3 bg-light">
           <AppHeaderDropdown />
         </CHeaderNav>
+      </CContainer>
+      <CHeaderDivider />
+      <CContainer fluid>
+        <AppBreadcrumb />
       </CContainer>
     </CHeader>
   )
